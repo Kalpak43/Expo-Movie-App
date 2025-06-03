@@ -4,7 +4,7 @@
     "slug": "reli",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "reli",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
