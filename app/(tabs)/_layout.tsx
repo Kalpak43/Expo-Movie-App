@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ImageSourcePropType,
-} from "react-native";
+import { View, Text, Image, ImageSourcePropType } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import { icons } from "@/constants/icons";
@@ -21,14 +15,14 @@ const tabs = [
     icon: icons.search,
   },
   {
-    title: "Profile",
-    name: "profile",
-    icon: icons.person,
-  },
-  {
     title: "Saved",
     name: "saved",
     icon: icons.save,
+  },
+  {
+    title: "Profile",
+    name: "profile",
+    icon: icons.person,
   },
 ];
 
@@ -41,12 +35,16 @@ interface TabIconProps {
 const TabIcon = ({ title, icon, focused }: TabIconProps) => {
   return (
     <View
-      className={`flex flex-row items-center justify-center gap-1 rounded-full w-full flex-1 min-w-[130px] min-h-16 mt-4 ${
+      className={`flex flex-col items-center justify-center rounded-full w-full flex-1 min-w-28 min-h-16 mt-4 px-2 ${
         focused ? "bg-accent shadow" : "text-dark-300"
       }`}
     >
-      <Image source={icon} tintColor={focused ? "#151312" : "#9ca4ab"} className="size-5" />
-      {focused && <Text>{title}</Text>}
+      <Image
+        source={icon}
+        tintColor={focused ? "#151312" : "#9ca4ab"}
+        className="size-5"
+      />
+      {focused && <Text className="text-xs">{title}</Text>}
     </View>
   );
 };
