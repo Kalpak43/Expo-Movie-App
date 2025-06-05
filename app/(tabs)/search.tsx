@@ -6,6 +6,7 @@ import { fetchMovies } from "@/services/api";
 import MovieCard from "@/components/movie-card";
 import Searchbar from "@/components/searchbar";
 import { icons } from "@/constants/icons";
+import { updateSearchCount } from "@/services/appwrite";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,6 +36,15 @@ const Search = () => {
 
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);
+
+  useEffect(() => {
+    if (movies?.length > 0 && movies?.[0]) {
+      updateSearchCount({
+        query: searchQuery,
+        movie: movies[0],
+      });
+    }
+  }, [movies]);
 
   return (
     <View className="bg-primary flex-1">

@@ -5,8 +5,8 @@ import { icons } from "@/constants/icons";
 interface SearchbarProps {
   onPress: () => void;
   placeHolder: string;
-  value: string;
-  onChange: (text: string) => void;
+  value?: string;
+  onChange?: (text: string) => void;
 }
 
 const Searchbar = ({
