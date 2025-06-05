@@ -137,7 +137,7 @@ npm install
 Copy .env.example to .env and fill in your credentials:
 
 ```sh
-cp [.env.example](http://_vscodecontentref_/0) .env
+cp .env.example .env
 ```
 
 - `EXPO_PUBLIC_MOVIE_API_KEY`: Your TMDB API key
