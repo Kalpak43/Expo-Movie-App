@@ -4,6 +4,7 @@ import useFetch from "@/hooks/useFetch";
 import { router, useLocalSearchParams } from "expo-router";
 import { fetchMovieDetails } from "@/services/api";
 import { icons } from "@/constants/icons";
+import { LinearGradient } from "expo-linear-gradient";
 
 interface MovieInfoProps {
   label: string;
@@ -33,6 +34,18 @@ const MovieDetails = () => {
           paddingBottom: 80,
         }}
       >
+        {/* Top Gradient Overlay */}
+        <LinearGradient
+          colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0)"]}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 100, // adjust as needed
+            zIndex: 10,
+          }}
+        />
         <View>
           <Image
             source={{

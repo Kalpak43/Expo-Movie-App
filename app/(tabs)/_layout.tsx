@@ -1,7 +1,8 @@
-import { View, Text, Image, ImageSourcePropType } from "react-native";
+import { View, Text, Image, ImageSourcePropType, StatusBar } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import { icons } from "@/constants/icons";
+import { BlurView } from "expo-blur";
 
 const tabs = [
   {
@@ -36,61 +37,75 @@ const TabIcon = ({ title, icon, focused }: TabIconProps) => {
   return (
     <View
       className={`flex flex-col items-center justify-center rounded-full w-full flex-1 min-w-28 min-h-16 mt-4 px-2 ${
-        focused ? "bg-accent shadow" : "text-dark-300"
+        focused ? "text-dark-300 shadow" : "text-dark-300"
       }`}
     >
       <Image
         source={icon}
-        tintColor={focused ? "#151312" : "#9ca4ab"}
-        className="size-5"
+        tintColor={focused ? "#ab8bff" : "#9ca4ab"}
+        className="size-6"
       />
-      {focused && <Text className="text-xs">{title}</Text>}
+      {focused && (
+        <Text
+          className={`text-sm ${focused ? "text-accent" : "text-dark-300"}`}
+        >
+          {title}
+        </Text>
+      )}
     </View>
   );
 };
 
 const _Layout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarShowLabel: false,
-        tabBarItemStyle: {
-          width: "100%",
-          height: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        },
-        tabBarStyle: {
-          backgroundColor: "#0f0d23",
-          borderRadius: 50,
-          marginHorizontal: 20, 
-          marginBottom: 36,
-          height: 52,
-          position: "absolute",
-          overflow: "hidden",
-          borderWidth: 1,
-          borderColor: "#0f0d23",
-          maxWidth: 240,
-          alignSelf: "center",
-        },
-      }}
-    >
-      {tabs.map((tab) => (
-        <Tabs.Screen
-          key={tab.name}
-          name={tab.name}
-          options={{
-            title: tab.title,
-            headerShown: false,
-            tabBarIcon: ({ focused }) => {
-              return (
-                <TabIcon title={tab.title} icon={tab.icon} focused={focused} />
-              );
-            },
-          }}
-        />
-      ))}
-    </Tabs>
+    <>
+      <StatusBar translucent backgroundColor="transparent" />
+      <Tabs
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarItemStyle: {
+            width: "100%",
+            height: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          },
+          tabBarStyle: {
+            position: "absolute",
+            backgroundColor: "#0f0d23",
+            borderTopEndRadius: 10,
+            borderTopStartRadius: 10,
+            // borderRadius: 50,
+            // marginHorizontal: 20,
+            // marginBottom: 36,
+            height: 80,
+            overflow: "hidden",
+            borderWidth: 1,
+            borderColor: "#0f0d23",
+            // maxWidth: 240,
+          },
+        }}
+      >
+        {tabs.map((tab) => (
+          <Tabs.Screen
+            key={tab.name}
+            name={tab.name}
+            options={{
+              title: tab.title,
+              headerShown: false,
+              tabBarIcon: ({ focused }) => {
+                return (
+                  <TabIcon
+                    title={tab.title}
+                    icon={tab.icon}
+                    focused={focused}
+                  />
+                );
+              },
+            }}
+          />
+        ))}
+      </Tabs>
+    </>
   );
 };
 
