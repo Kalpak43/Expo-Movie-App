@@ -1,50 +1,165 @@
-# Welcome to your Expo app 👋
+# Reli Movie App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Reli is a cross-platform movie discovery app built with Expo, React Native, and Appwrite. It allows users to search for movies, view trending titles, and see detailed information about each film.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Movie Search:** Search for movies using The Movie Database (TMDB) API.
+- **Trending Movies:** View trending movies based on search popularity, powered by Appwrite.
+- **Movie Details:** See detailed information, including genres, ratings, budget, revenue, and production companies.
+- **Modern UI:** Responsive and visually appealing interface using Tailwind CSS (via NativeWind).
 
-   ```bash
-   npm install
-   ```
+## Design Rationale
 
-2. Start the app
+The Reli Movie App is designed with Jakob Nielsen’s 10 Usability Heuristics in mind to ensure a user-friendly and intuitive experience:
 
-   ```bash
-   npx expo start
-   ```
+1. **Visibility of System Status:**  
+   The app provides loading indicators and feedback for actions like searching or fetching movie data, keeping users informed about ongoing processes.
 
-In the output, you'll find options to open the app in a
+2. **Match Between System and the Real World:**  
+   Movie information is presented using familiar terminology and layouts, mirroring popular movie platforms to reduce the learning curve.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+3. **User Control and Freedom:**  
+   Users can easily navigate back, cancel searches, and switch between tabs without losing their place or data.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+4. **Consistency and Standards:**  
+   UI components and navigation patterns are consistent throughout the app, following platform conventions and using standard icons.
 
-## Get a fresh project
+5. **Recognition Rather Than Recall:**  
+   Frequently used actions (like trending, search, and details) are always accessible via the tab bar, reducing the need to remember navigation paths
 
-When you're ready, run:
+6. **Flexibility and Efficiency of Use:**  
+   The app supports both quick browsing (trending movies) and detailed exploration (movie details), catering to both casual and power users.
 
-```bash
-npm run reset-project
+7. **Aesthetic and Minimalist Design:**  
+   The interface uses a clean, modern design with clear typography and minimal clutter, focusing attention on movie content.
+
+
+
+## Tech Stack
+
+- **React Native** (with Expo)
+- **Expo Router** for navigation
+- **NativeWind** (Tailwind CSS for React Native)
+- **Appwrite** for backend database and trending logic
+- **TMDB API** for movie data
+- **TypeScript** for type safety
+
+## Folder Structure
+
+```
+.
+├── README.md
+├── app
+│   ├── (tabs)
+│   │   ├── _layout.tsx
+│   │   ├── index.tsx
+│   │   └── search.tsx
+│   ├── _layout.tsx
+│   ├── global.css
+│   ├── index.tsx
+│   └── movie
+│       └── [id].tsx
+├── app.json
+├── assets
+│   ├── fonts
+│   │   └── SpaceMono-Regular.ttf
+│   ├── icons
+│   │   ├── arrow.png
+│   │   ├── home.png
+│   │   ├── logo.png
+│   │   ├── person.png
+│   │   ├── play.png
+│   │   ├── save.png
+│   │   ├── search.png
+│   │   └── star.png
+│   └── images
+│       ├── bg.png
+│       ├── highlight.png
+│       ├── logo.png
+│       └── rankingGradient.png
+├── babel.config.js
+├── components
+│   ├── movie-card.tsx
+│   ├── searchbar.tsx
+│   └── trending-card.tsx
+├── constants
+│   ├── icons.ts
+│   └── images.ts
+├── eas.json
+├── eslint.config.js
+├── expo-env.d.ts
+├── hooks
+│   └── useFetch.ts
+├── interfaces
+│   └── interfaces.d.ts
+├── metro.config.js
+├── nativewind-env.d.ts
+├── package-lock.json
+├── package.json
+├── services
+│   ├── api.ts
+│   └── appwrite.ts
+├── tailwind.config.js
+├── tree.txt
+├── tsconfig.json
+└── types
+    └── images.d.ts
+
+14 directories, 43 files
+
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Getting Started
 
-## Learn more
+### Prerequisites
 
-To learn more about developing your project with Expo, look at the following resources:
+- [Node.js](https://nodejs.org/)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- [Appwrite Project](https://appwrite.io/)
+- [TMDB API Key](https://www.themoviedb.org/documentation/api)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 1. Clone the Repository
 
-## Join the community
+```sh
+git clone https://github.com/yourusername/reli.git
+cd reli
+```
 
-Join our community of developers creating universal apps.
+### 2. Install Dependencies
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```sh
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Copy .env.example to .env and fill in your credentials:
+
+```sh
+cp [.env.example](http://_vscodecontentref_/0) .env
+```
+
+- `EXPO_PUBLIC_MOVIE_API_KEY`: Your TMDB API key
+- `EXPO_PUBLIC_APPWRITE_PROJECT_ID`: Appwrite project ID
+- `EXPO_PUBLIC_APPWRITE_DATABASE_ID`: Appwrite database ID
+- `EXPO_PUBLIC_APPWRITE_COLLECTION_ID`: Appwrite collection ID
+
+### 4. Start the App
+
+```sh
+npx expo start
+```
+
+Then follow the Expo CLI instructions to run on Android, iOS, or Web.
+
+#### Scripts
+
+- `npm start` — Start the Expo development server
+- `npm run android` — Run on Android device/emulator
+- `npm run ios` — Run on iOS simulator
+- `npm run web` — Run in the browser
+- `npm run lint` — Lint the codebase
+
+
+Made with ❤️ using Expo, React Native, and Appwrite
