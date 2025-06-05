@@ -12,7 +12,6 @@ import MaskedView from "@react-native-masked-view/masked-view";
 import { images } from "@/constants/images";
 
 const TrendingCard = ({ movie, index }: TrendingCardProps) => {
-  console.log(movie);
   return (
     <Link href={`/movie/${movie.MOVIE_ID}`} asChild>
       <TouchableOpacity className="w-32 relative pl-5">

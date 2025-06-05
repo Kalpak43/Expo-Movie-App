@@ -14,16 +14,16 @@ const tabs = [
     name: "search",
     icon: icons.search,
   },
-  {
-    title: "Saved",
-    name: "saved",
-    icon: icons.save,
-  },
-  {
-    title: "Profile",
-    name: "profile",
-    icon: icons.person,
-  },
+  // {
+  //   title: "Saved",
+  //   name: "saved",
+  //   icon: icons.save,
+  // },
+  // {
+  //   title: "Profile",
+  //   name: "profile",
+  //   icon: icons.person,
+  // },
 ];
 
 interface TabIconProps {
@@ -63,13 +63,15 @@ const _Layout = () => {
         tabBarStyle: {
           backgroundColor: "#0f0d23",
           borderRadius: 50,
-          marginHorizontal: 20,
+          marginHorizontal: 20, 
           marginBottom: 36,
           height: 52,
           position: "absolute",
           overflow: "hidden",
           borderWidth: 1,
           borderColor: "#0f0d23",
+          maxWidth: 240,
+          alignSelf: "center",
         },
       }}
     >
